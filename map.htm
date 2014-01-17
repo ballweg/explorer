@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Open Day Explorer Map</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript">
+    			
+		function mapInit() {
+		
+		  var cdu = new google.maps.LatLng(-12.372056, 130.869);
+		
+		  var swBound = new google.maps.LatLng(-12.376493,130.863291);
+		  var neBound = new google.maps.LatLng(-12.367739,130.874569);
+		  var bounds = new google.maps.LatLngBounds(swBound, neBound);
+		
+		  var imageBounds = new google.maps.LatLngBounds(swBound, neBound);
+			
+		  
+		  var mapOptions = {
+		    zoom: 17,
+		    center: cdu,
+		    mapTypeId: google.maps.MapTypeId.ROAD
+		  }		  
+		  
+		  //var bldgOverlayOptions = {opacity: 1}		  
+		  var odayOverlayOptions = {opacity:1}	  
+		  var pathOverlayOptions = {opacity:0.6}
+		
+		  map = new google.maps.Map(document.getElementById('map'), mapOptions);
+		
+		    var paths = new google.maps.GroundOverlay(
+		      '/assets/img/map/paths.png',
+		      imageBounds, pathOverlayOptions);
+		  paths.setMap(map);
+		  
+		  var bldgs = new google.maps.GroundOverlay(
+		      '/assets/img/map/bldgs.png',
+		      imageBounds);
+		  bldgs.setMap(map);
+		  
+		  var oday = new google.maps.GroundOverlay(
+		      '/assets/img/map/oday.png',
+		      imageBounds, odayOverlayOptions);
+		  oday.setMap(map);
+		  
+		  $.ajax({
+		  	type:    "GET",
+			url:     "getGeo.php?loc=true",
+			dataType: "json",
+			cache:   false,
+			success: function(data){prepareMarker(data)},
+			error:   callbackError
+		  });
+		  
+		  
+		  //createMarker(map, new google.maps.LatLng(-12.372056,130.869));
+		  
+		}
+
+		function createMarker(map, latlng, txt, questid){
+		
+		  /*var icon = new google.maps.Icon({
+			 url: '/assets/img/map/markers/teal.png',
+			 size: new google.maps.Size(10,10) 
+		  });*/
+		  
+			  var icon = new google.maps.MarkerImage("/assets/img/map/markers/teal.png", null, null, null, new google.maps.Size(8,8));
+			  
+			  var map;
+			  
+			  var dot = {
+				  fillColor: "paleturquoise",
+				  fillOpacity: 1,
+				  strokeColor: "black",
+				  strokeWeight: 1,
+				  scale: 1,
+				  path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW
+			  }
+			
+			  var marker = new google.maps.Marker({
+			      position: latlng,
+			      map: map,
+			      title: txt,
+			      icon: icon,
+			  });
+			  
+			  marker.setMap(map);
+		}
+		
+		function prepareMarker(data){
+			for(i=0; i<data.length; i++){
+				//console.log(data[i].lat, data[i].lon, data[i].location, data[i].quest_id);
+				ll = new google.maps.LatLng(data[i].lat, data[i].lon);
+				createMarker(map, ll, data[i].location, data[i].quest_id);
+			}
+		}
+		
+		
+		/* generic callback error messaging */
+		function callbackError(){
+			console.log('there was an error fetching key data from the server - map engine');
+		}
+		
+		//google.maps.event.addDomListener(window, 'load', mapInit());
+		$(document).ready(function(){
+			$('#map').css('height', $(window).height());
+			mapInit();
+		});
+		
+		$(window).resize(function(){
+			$('#map').css('height', $(window).height());
+		});
+
+
+    </script>
+    <style type="text/css">
+    	#map{
+	    	height: 500px;
+	    	width: 100%;
+	    	margin: 0;
+    	}
+    	
+    	#logo{
+	    	width: 15%;
+	    	height: auto;
+	    	position: absolute;
+	    	bottom: 4%;
+	    	left: 6%;
+    	}
+    	
+    	html, body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+		
+		#map-canvas, #map_canvas {
+		  height: 100%;
+		}
+		
+		@media print {
+		  html, body {
+		    height: auto;
+		  }
+		
+		  #map-canvas, #map_canvas {
+		    height: 650px;
+		  }
+		}
+		
+		#panel {
+		  position: absolute;
+		  top: 5px;
+		  left: 50%;
+		  margin-left: -180px;
+		  z-index: 5;
+		  background-color: #fff;
+		  padding: 5px;
+		  border: 1px solid #999;
+		}
+
+    	
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="logo"><img src="/assets/img/exp_splash.svg"></div>
+  </body>
+</html>

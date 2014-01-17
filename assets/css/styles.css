@@ -1,0 +1,260 @@
+.product i{
+	display:block;
+	font-size:0.8em;
+	font-weight:normal;
+	font-style:normal;
+}
+
+.product img{
+	margin:10px;
+}
+
+.product b{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	font-size: 0.9em;
+}
+
+.product{
+	height: 80px;
+}
+
+.user{
+	font-weight: normal;
+}
+
+.user .title{
+	font-weight: bold;
+	display: block;
+	padding-bottom: 0.2em;
+}
+
+#splash{
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+}
+
+label.error {
+    float: none; 
+    color: red; 
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 0.5em;
+    width: 100%;
+    display: block;
+    margin-left: 22%;
+}
+
+.cbox-inline-lbl{
+	padding: .6em 0 .6em 3%;
+}
+
+#terms-grid .ui-block-a{width: 45%}
+#terms-grid .ui-block-b{width: 55%}
+
+
+#splash object{width:65%; max-width: 500px;}
+
+#map {width: 100%; height: 250px; /*temp*/}
+#map img {width: 100%}
+
+.ui-li-icon-exp{
+	height: 80px;
+	vertical-align: middle;
+	display: inline-block;
+	padding-right: 10px;
+}
+
+/* challenge page */
+.challenge-page{
+	/*background-color: #eea;*/
+	width: 100%;
+	max-width: 100%;
+}
+
+.challenge-page h2{
+	margin: .5em 0 .05em 0;
+}
+.challenge-page .location, #profile h3{
+	color: #878787;
+	font-size: 0.8em;
+	margin-bottom: 1em;
+}
+
+.challenge-page .location img{
+	width: 18px;
+	vertical-align: bottom;
+	height: auto;
+}
+
+.challenge-page .challenge-link{
+	text-align: right;
+	margin-bottom: 1em;
+}
+
+.challenge-page .challenge-link a{
+	border: solid 1px #c5d5ea;
+	border-radius: 0.5em;
+	background-color: #f6fcfe;
+	padding: 0.7em;
+}
+
+.challenge-page img{
+	max-width: 100%;
+}
+
+.challenge-page .ui-field-contain{
+	padding-top: 0;
+}
+
+.qaform .ui-block-a{
+	width: 75%;
+	padding-top: 3px;
+}
+
+.qaform .ui-block-b{
+	width: 23%;
+	padding-left: 2%;
+}
+
+.qaform label.ui-input-text{
+	width: inherit;
+}
+
+.completed .li{
+}
+
+.completed .ui-icon{
+	background-color: #00b801;
+}
+
+.qaform.completed{
+	display: none;
+}
+
+.page-completed{
+	text-align: center;
+	display: none;
+	font-size: 2em;
+}
+.page-completed img{
+	max-width: 25%; 
+	text-align: baseline; 
+	vertical-align: middle; 
+	margin-top: -25px; 
+	padding-right: 14px;
+}
+/*
+.big-tick{
+	color: white;
+	background-color: green;
+	border-radius: 1em;
+	border: solid 5px white;
+	box-shadow: 2px 2px 2px #ccc;
+	height: 1.2em;
+	width: 1.2em;
+	font-size: 5.5em;
+	margin: 0 auto;
+}
+*/
+
+#rewardDialog #diag-image{
+	/*width: 100%;
+	height: 220px;*/
+	/*background-size: 100% 100%;
+	
+	background-repeat: no-repeat;*/
+	display: block;
+	margin: 0 auto 1em auto;
+	max-width: 100%;
+}
+
+#rewardDialog #diag-text{
+	margin-bottom: 1em;
+}
+
+#rewardDialog #diag-heading{
+	margin: 0.1em 0 0.5em;
+}
+
+/* User Profile Page */
+#profile h1{
+}
+
+#profile h3{
+	margin: 0;
+}
+
+#badges{
+}
+
+#badges ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#badges li{
+	display: inline-block;
+	font-size: 0.5em;
+	text-align: center;
+	color: #555;
+	padding: 1em;
+}
+
+#badges li img{
+	height: 60px;
+	width: 60px;
+	float: left;
+}
+
+#login .login-buttons ,#login .login-username, #login .login-password {
+	padding: 0.5em 0;
+}
+
+#login .login-username input, #login .login-password input{
+	padding:0.25em;
+	font-size: 1.3em;
+}
+
+#login .ui-btn{
+	margin-bottom: 0.5em;
+}
+
+.reg-form .input{
+	margin: 0.5em 0;
+}
+
+.reg-buttons .ui-block-b{
+	padding: 9px;
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    
+	.ui-li-icon-exp{
+		height: 80px;
+	}
+}
+
+@media all and (min-width: 650px){
+	#map{
+		width: 40%;
+	}
+	#map img{
+		max-width: 100%;
+	}
+	.rightColumn{
+		width:56%;
+		float:right;
+		margin-left:4%;
+	}
+	
+	.leftColumn{
+		width:40%;
+		float:left;
+	}
+
+}
